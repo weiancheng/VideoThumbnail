@@ -1,6 +1,7 @@
 package com.example.videothumbnail
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +19,9 @@ class VideoFrameAdapter(private val context: Context, private val itemWidth: Int
     }
 
     override fun onBindViewHolder(holder: VideoFrameHolder, position: Int) {
-        Glide.with(context).load(videoFrameBuffer[position].bitmap).into(holder.img)
+        //Glide.with(context).load(videoFrameBuffer[position].bitmap).into(holder.img)
+        holder.img.setImageBitmap(videoFrameBuffer[position].bitmap)
+        Log.i("VideoTrimmer", "width: ${holder.img.width}, height: ${holder.img.height}, bitmap width: ${videoFrameBuffer[position].bitmap.width}, bitmap height: ${videoFrameBuffer[position].bitmap.height}")
     }
 
     override fun getItemCount() = videoFrameBuffer.size
